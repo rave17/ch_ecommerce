@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Home from './components/container/Home.jsx';
 import * as serviceWorker from './serviceWorker';
+import MenuBar from './components/navbar/NavBar';
+import Products from './components/products/Products';
+import ItemCount from './components/products/product/ProductDesc';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <>
+  <MenuBar/>
+    <Home/>
+    <Products/>
+    <ItemCount/>
+    
+  </>,
   document.getElementById('root')
 );
 

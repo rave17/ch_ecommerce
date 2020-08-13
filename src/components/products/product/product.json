@@ -1,0 +1,10 @@
+{
+    "productItem" : {
+        "name": "ejemplo",
+        "price": 12,
+        "description": "product description, simple",
+        "color": ["red", "white", "blue"],
+        "stock": 4,
+        "id": 1
+    }
+}
