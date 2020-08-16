@@ -3,17 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Home from './components/container/Home.jsx';
 import * as serviceWorker from './serviceWorker';
-import MenuBar from './components/navbar/NavBar';
-import Products from './components/products/Products';
-import ItemCount from './components/products/product/ProductDesc';
+import MenuBar from './components/navbar/NavBar.jsx';
+import Footer from './components/footer/Footer';
 
 ReactDOM.render(
   <>
-  <MenuBar/>
+    <MenuBar/>
     <Home/>
-    <Products/>
-    <ItemCount/>
-    
+    <Footer/>
   </>,
   document.getElementById('root')
 );
