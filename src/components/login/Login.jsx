@@ -1,33 +1,36 @@
 import React from 'react'
 import { Form, Button } from 'react-bootstrap'
+import login from '../../utils/login'
 
-export default function Login() {
+function Login() {
+
+    
+
 
     return (
         <>
-        <div className="col-md-4">
-            <Form className="p-3">
+        
+            <Form className="col-md-3 mx-auto">
+                <Form.Text className="display-4 text-center mb-4">Welcome</Form.Text>
                 <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control type="email" placeholder="Enter email" name="emailLog" />
                     <Form.Text className="text-muted">
                         We'll never share your email with anyone else.
-    </Form.Text>
+                    </Form.Text>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control type="password" placeholder="Password" name="passLog" />
+                    <small className="text-muted"><a href="forgotuser">Forgot your password?</a></small>
+                <Button className="btn-block mt-3" onClick={login} variant="primary" type="submit">
+                    Login
+                </Button>
                 </Form.Group>
-                <Form.Group controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
-                <Button className="btn-block" variant="primary" type="submit">
-                    Submit
-  </Button>
-</Form>
-</div>
+            </Form>
+
         </>
     )
 
 }
+
+export default Login;

@@ -1,45 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import Product from './Product.jsx';
-import infoProduct from './product.json'
-import { Container, Button } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
 
 
-function ItemCount(){
 
-const [quantity, setQuantity] = useState( infoProduct.productItem.stock )
+const Counter = ({initial, min, max}) => {
+  
+    const [count, setCount] = useState(initial)
+    
+    function add(){
+      if(count < max){
+        setCount(count+1)
+      }
+    }
+    function sup(){
+      if(count > min){
+        setCount(count-1)
+      }
+    }
+  
+    return (
+  
+      <>
+    <span className="border-success d-flex justify-content-around">
+      <Button disabled={count === min } onClick={sup} >-</Button>
+     <p > {count} </p>
+      <Button disabled={count === max } onClick={add}>+</Button>
+    </span>
+  
+      <h5 className="display-5">
+        {
+          count === max 
+          ? <p className="text-alert">"Agotado"</p> 
+          : "Quedan "+ (max-count )+ " productos"
+        }
+      </h5>
+      </>
+    );
+  }
 
-useEffect(() => {
-    // Actualiza el título del documento usando la API del navegador
-    console.log( `remain ${quantity} items of this product` );
-  }, [quantity]);
-
-const addItem = ()=>{
-    setQuantity(quantity+1)
-    console.log('item added ' + quantity)
-    return quantity;
+function ProductDescription(){
+    return<>
+    <Counter  initial={1} min={0} max={8}/>
+    </>
 }
 
-const supItem = ()=>{
-    setQuantity(quantity - 1)
-
-    console.log('item sup ' + quantity)
-    return quantity;
-}
-
-    return(
-   
-        <Container className="col-md-4 my-3">
-            <Product/>
-            <div className="row d-flex justify-content-around mx-auto my-3">
-                <Button variant="primary" onClick={supItem}  disabled={1 >= quantity} >-</Button>
-    <p>UNIT: {quantity}</p>
-                <Button variant="primary" onClick={addItem} disabled={4 <= quantity}>+</Button>
-            </div>    
-        <Button type= "button" variant="outline-primary" className="btn btn-block">Primary</Button>
-        </Container>
-        
-    )
-
-}
-
-export default ItemCount;
+export default ProductDescription;

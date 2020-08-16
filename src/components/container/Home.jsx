@@ -1,26 +1,28 @@
 import React from 'react';
-import './App.css';
-import { Jumbotron, Button, Container } from 'react-bootstrap';
+import { Jumbotron, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from '../login/Login';
+import Register from '../registerForm/Register';
+import Products from '../products/product/Product.jsx'
 
 
-function Home({ content }) {
-  console.log(content)
+function Home(children) {
+  
   return (
-    <Container className="Container App d-flex justify-content-between my-3">
-      <Jumbotron className="col-md-8">
-        <h1>Hello, world!</h1>
+    <>
+    <Container fluid className="row d-flex justify-content-between mt-5">
+      <Jumbotron className="col-md-8 p-5 mx-auto">
+        <h1 className="display-4">Ecommmerce CoderHouse</h1>  
+        <hr/>
+        <p>All products in one page, heres you gone find all what you need </p>
         <p>
-          This is a simple hero unit, a simple jumbotron-style component for calling
-          extra attention to featured content or information.
-  </p>
-        <p>
-          <Button variant="primary">Best Products</Button>
+          <Register/>
         </p>
       </Jumbotron>
       <Login/>
     </Container>
+    <Products/>
+    </>
   );
 }
 

@@ -1,10 +1,25 @@
-{
-    "productItem" : {
-        "name": "ejemplo",
-        "price": 12,
-        "description": "product description, simple",
-        "color": ["red", "white", "blue"],
-        "stock": 4,
-        "id": 1
+[
+    {
+    "uno":    {
+            "name": "remera",
+            "id": 1,
+            "price": 10,
+            "description": "remera description, simple",
+            "stock": 4
+        },
+    "dos":    {
+            "name": "pantalon",
+            "id": 2,
+            "price": 15,
+            "description": "pantalon description, simple",
+            "stock": 4
+        },
+    "tres":    {
+            "name": "buzo",
+            "id": 3,
+            "price": 12,
+            "description": "buzo description, simple",
+            "stock": 4
+        }
     }
-}
+]
