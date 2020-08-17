@@ -2,27 +2,40 @@ import React, { useState, useEffect } from 'react';
 import Title from '../../title/Title.jsx';
 import imgExample from '../product/img/example.png';
 import getProducts from '../../../utils/getProducts';
-import { Container, Card, CardColumns, Button, Spinner } from 'react-bootstrap';
+import { Container, Card, CardColumns, Button, Spinner, Row } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 
-
-
+function AddToCart(item){
+    function onAdd(){
+      console.log("add to cart "+ {item})
+    }
+    return <>
+    
+      <Button onClick={onAdd} className="btn m-2">Add to cart <FontAwesomeIcon icon={faShoppingCart}/></Button>
+    
+  
+    </>
+  }
 
 function Product({ product, imgProduct }) {
 
     return <>
             {product.map((p, idx) =>
-        <Card>
+        <Card key={p.id}>
             <Card.Img src={imgProduct} className="w-25" />
-                <Card.Body key={p.id}>
+                <Card.Body>
                     <Card.Title>{p.name}</Card.Title>
                     <Card.Text>{p.description}</Card.Text>
                     <Card.Text className="my-auto text-success font-weight-bold">{p.price}</Card.Text>
                 </Card.Body>
             <Card.Footer className="d-flex justify-content-around">
-                <Button>Comprar</Button>
-                <Button>Ver Mas</Button>
+                <Button variant="outline-info">Buy</Button>
+                <Button>See More</Button>
+
             </Card.Footer>
+                <AddToCart item={p.name} />
         </Card>)}
     </>
 }
@@ -38,15 +51,15 @@ function Products() {
             setItems(res);
             setLoading(false);
         })
-    })
+    }, [])
 
     return <>
 
-        <Container className="my-3">
-            {loading && <Spinner animation="border" role="status">
-                <span className="sr-only">Loading...</span>
-            </Spinner>}
             <Title text="Products" />
+            <Row className="mx-0">{loading && <Spinner className="mx-auto mb-4" animation="border" role="status">
+                <span className="sr-only">Loading...</span>
+            </Spinner>}</Row>
+        <Container className="my-5">
             <CardColumns className="text-center">
                 <Product imgProduct={imgExample} product={item} />
             </CardColumns>

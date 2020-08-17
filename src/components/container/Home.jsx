@@ -3,7 +3,6 @@ import { Jumbotron, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from '../login/Login';
 import Register from '../registerForm/Register';
-import Products from '../products/product/Product.jsx'
 
 
 function Home(children) {
@@ -21,7 +20,6 @@ function Home(children) {
       </Jumbotron>
       <Login/>
     </Container>
-    <Products/>
     </>
   );
 }

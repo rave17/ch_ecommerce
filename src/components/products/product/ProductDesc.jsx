@@ -3,19 +3,19 @@ import { Button } from 'react-bootstrap';
 
 
 
+
 const Counter = ({initial, min, max}) => {
   
     const [count, setCount] = useState(initial)
     
     function add(){
-      if(count < max){
+      if(count < max)
         setCount(count+1)
-      }
     }
+    
     function sup(){
-      if(count > min){
+      if(count > min)
         setCount(count-1)
-      }
     }
   
     return (
@@ -26,14 +26,15 @@ const Counter = ({initial, min, max}) => {
      <p > {count} </p>
       <Button disabled={count === max } onClick={add}>+</Button>
     </span>
-  
+   
       <h5 className="display-5">
         {
           count === max 
-          ? <p className="text-alert">"Agotado"</p> 
-          : "Quedan "+ (max-count )+ " productos"
+          ? <p className="text-alert">"Sold out"</p> 
+          : (max-count )+ " products left"
         }
       </h5>
+     
       </>
     );
   }

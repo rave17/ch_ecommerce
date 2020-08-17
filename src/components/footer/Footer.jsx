@@ -3,18 +3,20 @@ import { Nav, Navbar } from 'react-bootstrap';
 
 
 function Footer({link}){
+
+
     return <>
-  <Navbar bg="dark" variant="dark" className="d-flex justify-content-between mt-5"> 
-  <h3 class="my-auto">CoderHouse</h3>     
+  <Navbar bg="dark" variant="dark" className="d-flex justify-content-between mt-5 fixed-bottom" > 
+  <h3 className="my-auto">CoderHouse</h3>     
   <Nav className="col-md-3  justify-content-between p-0" activeKey="/home">
     <Nav.Item>
       <Nav.Link href="/home" link="uno">Home</Nav.Link>
     </Nav.Item>
     <Nav.Item>
-      <Nav.Link eventKey="link-1"  link={"uno"}>Products</Nav.Link>
+      <Nav.Link link={"uno"}>Products</Nav.Link>
     </Nav.Item>
     <Nav.Item>
-      <Nav.Link eventKey="link-2"  link={"uno"}>Contact</Nav.Link>
+      <Nav.Link link={"uno"}>Contact</Nav.Link>
     </Nav.Item>
   </Nav>
   <Nav bg="dark" variant="dark" className="flex-column" activeKey="/home">
