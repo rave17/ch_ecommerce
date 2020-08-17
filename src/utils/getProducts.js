@@ -37,7 +37,7 @@ export default function getProducts() {
                 description: "unas zapatillas",
                 price: 800
             }])
-        }, )
+        },2000 )
         console.log(res)
     });
 }

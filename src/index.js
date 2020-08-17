@@ -1,16 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Home from './components/container/Home.jsx';
 import * as serviceWorker from './serviceWorker';
 import MenuBar from './components/navbar/NavBar.jsx';
 import Footer from './components/footer/Footer';
+import Home from './components/container/Home.jsx';
+import Products from './components/products/product/Product.jsx';
+
 
 ReactDOM.render(
   <>
+
     <MenuBar/>
     <Home/>
-    <Footer/>
+    <Products/>
+    <Footer/> 
   </>,
   document.getElementById('root')
 );
