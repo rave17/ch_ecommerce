@@ -3,18 +3,10 @@ import Title from '../../title/Title.jsx';
 import imgExample from '../product/img/example.png';
 import getProducts from '../../../utils/getProducts';
 import { Container, Card, CardColumns, Button, Spinner, Row } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import ProductDescription from './ProductDesc.jsx';
 
 
-function AddToCart(item) {
-    function onAdd() {
-        console.log("add to cart " + { item })
-    }
-    return <>
-        <Button onClick={onAdd} className="btn m-2">Add to cart <FontAwesomeIcon icon={faShoppingCart} /></Button>
-    </>
-}
+
 
 function Product({ product, imgProduct }) {
 
@@ -30,9 +22,8 @@ function Product({ product, imgProduct }) {
                 <Card.Footer className="d-flex justify-content-around">
                     <Button variant="outline-info">Buy</Button>
                     <Button>See More</Button>
-
                 </Card.Footer>
-                <AddToCart item={p.name} />
+                    <ProductDescription/>
             </Card>)}
     </>
 }

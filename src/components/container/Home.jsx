@@ -20,6 +20,7 @@ function Home(children) {
       </Jumbotron>
       <Login/>
     </Container>
+    
     </>
   );
 }
