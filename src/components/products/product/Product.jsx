@@ -3,9 +3,7 @@ import Title from '../../title/Title.jsx';
 import imgExample from '../product/img/example.png';
 import getProducts from '../../../utils/getProducts';
 import { Container, Card, CardColumns, Button, Spinner, Row } from 'react-bootstrap';
-import ProductDescription from './ProductDesc.jsx';
-
-
+import ProductDescription from './ProductCount.jsx';
 
 
 function Product({ product, imgProduct }) {
@@ -32,6 +30,7 @@ function Products() {
 
     const [item, setItems] = useState([]);
     const [loading, setLoading] = useState(true)
+
 
     useEffect(() => {
         console.log("getting products");

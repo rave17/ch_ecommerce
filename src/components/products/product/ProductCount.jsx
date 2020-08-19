@@ -4,18 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 
-function AddToCart(item) {
-  function onAdd() {
-    console.log("add to cart " + { item })
-  }
-  return <>
-    <Button onClick={onAdd} className="btn m-2">Add to cart <FontAwesomeIcon icon={faShoppingCart} /></Button>
-  </>
+
+function onAdd(count) {
+    console.log("add item to cart "+ count )
 }
 
-const Counter = ({ initial, min, max }) => {
+const ItemCounter = ({ initial, min, max, onAdd }) => {
 
   const [count, setCount] = useState(initial)
+
 
   function add() {
     if (count < max)
@@ -27,6 +24,7 @@ const Counter = ({ initial, min, max }) => {
       setCount(count - 1)
   }
 
+
   return (
 
     <>
@@ -36,8 +34,7 @@ const Counter = ({ initial, min, max }) => {
         <Button disabled={count === max} onClick={add}>+</Button>
       </span>
       <span>
-    <AddToCart item="product"/>
-
+        < Button className="btn m-2" onClick={onAdd}>Add to cart <FontAwesomeIcon icon={faShoppingCart} /></Button>
       </span>
 
       <h5 className="display-5">
@@ -47,16 +44,16 @@ const Counter = ({ initial, min, max }) => {
             : (max - count) + " products left"
         }
       </h5>
-
     </>
 
-    );
+  );
 }
 
-function ProductDescription() {
+
+function ProductCount() {
   return <>
-    <Counter initial={1} min={0} max={8} />
+    <ItemCounter initial={1} min={0} max={8} onAdd={onAdd} />
   </>
 }
 
-export default ProductDescription;
+export default ProductCount;
