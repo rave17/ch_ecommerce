@@ -5,14 +5,11 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 
 
-function onAdd(count) {
-    console.log("add item to cart "+ count )
-}
 
-const ItemCounter = ({ initial, min, max, onAdd }) => {
+
+const Counter = ({ initial, min, max, onAdd }) => {
 
   const [count, setCount] = useState(initial)
-
 
   function add() {
     if (count < max)
@@ -24,9 +21,7 @@ const ItemCounter = ({ initial, min, max, onAdd }) => {
       setCount(count - 1)
   }
 
-
   return (
-
     <>
       <span className="border-success d-flex justify-content-around">
         <Button disabled={count === min} onClick={sup} >-</Button>
@@ -45,15 +40,9 @@ const ItemCounter = ({ initial, min, max, onAdd }) => {
         }
       </h5>
     </>
-
   );
 }
 
 
-function ProductCount() {
-  return <>
-    <ItemCounter initial={1} min={0} max={8} onAdd={onAdd} />
-  </>
-}
 
-export default ProductCount;
+export default Counter;

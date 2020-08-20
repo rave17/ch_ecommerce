@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import Title from '../../title/Title.jsx';
-import imgExample from '../product/img/example.png';
-import getProducts from '../../../utils/getProducts';
+import Title from '../title/Title.jsx';
+import imgExample from './product/img/example.png';
+import getProducts from '../../utils/getProducts';
 import { Container, Card, CardColumns, Button, Spinner, Row } from 'react-bootstrap';
-import ProductDescription from './ProductCount.jsx';
+import onAdd from '../../utils/onAdd';
+import Counter from './product/Counter.jsx';
+import DescriptionContainer from './product/ProductDescriptionContainer.jsx';
+import ProductDescription from './product/ProductDescription.jsx';
 
 
-function Product({ product, imgProduct }) {
+function ProductList({ product, imgProduct }) {
 
     return <>
         {product.map((p, idx) =>
@@ -19,21 +22,24 @@ function Product({ product, imgProduct }) {
                 </Card.Body>
                 <Card.Footer className="d-flex justify-content-around">
                     <Button variant="outline-info">Buy</Button>
-                    <Button>See More</Button>
+                    <Button >See More</Button>
                 </Card.Footer>
-                    <ProductDescription/>
+                <Counter initial={1} min={1} max={3} onAdd={onAdd}/>
             </Card>)}
+            <hr></hr>
+            <Row className="bg-dark">
+            <DescriptionContainer/>
+      <ProductDescription/></Row>
     </>
 }
 
 function Products() {
 
-    const [item, setItems] = useState([]);
+    const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true)
 
-
     useEffect(() => {
-        console.log("getting products");
+        console.log("getting products...");
         getProducts().then(res => {
             setItems(res);
             setLoading(false);
@@ -48,7 +54,7 @@ function Products() {
         </Spinner>}</Row>
         <Container className="my-5">
             <CardColumns className="text-center">
-                <Product imgProduct={imgExample} product={item} />
+                <ProductList imgProduct={imgExample} product={items} />
             </CardColumns>
         </Container>
 
