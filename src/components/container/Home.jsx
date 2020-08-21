@@ -18,7 +18,6 @@ function Home(children) {
         </p>
       </Jumbotron>
       <Login/>
-      
     </Container>
     
     </>

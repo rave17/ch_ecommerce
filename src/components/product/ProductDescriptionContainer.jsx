@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import getProducts from '../../../utils/getProducts';
-import { Card, Spinner } from 'react-bootstrap';
+import getProducts from '../../utils/getProducts';
+import { Card, Spinner, Row } from 'react-bootstrap';
+import ProductDescription from './ProductDescription';
 
-function DescriptionContainer({ itemDescription }) {
+function DescriptionContainer({ children }) {
 
     const [description, setDescription] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -12,22 +13,22 @@ function DescriptionContainer({ itemDescription }) {
     useEffect(() => {
         console.log("get info item");
         getProducts().then(res => {
-            setDescription(res);
+            setDescription(res[0]);
             setLoading(false);
+            console.log(res[0])
         })
     }, []);
 
     return <>
-        <Card>
+        
+        <Row className="mx-auto">
         {loading && <Spinner className="mx-auto mb-4" animation="border" role="status">
             <span className="sr-only">Loading...</span>
         </Spinner>}
-            <Card.Body>
-                <Card.Text>
-                    {itemDescription}
-                </Card.Text>
-            </Card.Body>
-        </Card>
+            <Card>
+                    <ProductDescription itemTitle={description.name} itemDescription={description.longDescription}/>
+            </Card>
+            </Row>
     </>
 }
 

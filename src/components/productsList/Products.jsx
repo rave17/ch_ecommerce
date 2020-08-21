@@ -5,8 +5,6 @@ import getProducts from '../../utils/getProducts';
 import { Container, Card, CardColumns, Button, Spinner, Row } from 'react-bootstrap';
 import onAdd from '../../utils/onAdd';
 import Counter from './product/Counter.jsx';
-import DescriptionContainer from './product/ProductDescriptionContainer.jsx';
-import ProductDescription from './product/ProductDescription.jsx';
 
 
 function ProductList({ product, imgProduct }) {
@@ -24,12 +22,8 @@ function ProductList({ product, imgProduct }) {
                     <Button variant="outline-info">Buy</Button>
                     <Button >See More</Button>
                 </Card.Footer>
-                <Counter initial={1} min={1} max={3} onAdd={onAdd}/>
+                <Counter initial={1} min={1} max={3} onAdd={onAdd} />
             </Card>)}
-            <hr></hr>
-            <Row className="bg-dark">
-            <DescriptionContainer/>
-      <ProductDescription/></Row>
     </>
 }
 
@@ -47,7 +41,6 @@ function Products() {
     }, [])
 
     return <>
-
         <Title text="Products" />
         <Row className="mx-0">{loading && <Spinner className="mx-auto mb-4" animation="border" role="status">
             <span className="sr-only">Loading...</span>
@@ -57,7 +50,6 @@ function Products() {
                 <ProductList imgProduct={imgExample} product={items} />
             </CardColumns>
         </Container>
-
     </>
 }
 export default Products;
