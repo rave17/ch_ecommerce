@@ -1,34 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import getProducts from '../../utils/getProducts';
-import { Card, Spinner, Row } from 'react-bootstrap';
-import ProductDescription from './ProductDescription';
+import getOneProduct from '../../utils/getOneProduct';
+import { useParams } from 'react-router-dom';
 
-function DescriptionContainer({ children }) {
+function DescriptionContainer({ idI }) {
+    const { id } = useParams()
+    const [description, setDescription] = useState(null);
 
-    const [description, setDescription] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    console.log(`the item is: ${description}`)
-
+    console.log(`the item is params: `, id);
+    
     useEffect(() => {
-        console.log("get info item");
-        getProducts().then(res => {
-            setDescription(res[0]);
-            setLoading(false);
-            console.log(res[0])
-        })
-    }, []);
+    getOneProduct(id).then(res =>{
+        console.log("geting info item...");
+        setDescription(res)
+    });
+    return ()=>{
+        console.log(`dismounted...`)
+    }
+    }, [id]);
 
     return <>
-        
-        <Row className="mx-auto">
-        {loading && <Spinner className="mx-auto mb-4" animation="border" role="status">
-            <span className="sr-only">Loading...</span>
-        </Spinner>}
-            <Card>
-                    <ProductDescription itemTitle={description.name} itemDescription={description.longDescription}/>
-            </Card>
-            </Row>
+    <p>este es el id de params: {id}</p>
+    {description && <p>esta es la info {description.longDescription}</p>}
     </>
 }
 

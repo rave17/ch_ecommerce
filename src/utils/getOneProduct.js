@@ -1,7 +1,7 @@
-export default function getProduct(id) {
+export default function getOneProduct(id) {
     return new Promise((res, rej) => {
         setTimeout(() => {
-            res([{
+            const items = [{
                 id: "01",
                 name: "remera",
                 description: "una remera",
@@ -42,8 +42,10 @@ export default function getProduct(id) {
                 description: "unas zapatillas",
                 longDescription: "unas zapatillas que deberias comprar, porque? no hay porque... ",
                 price: 800
-            }]);
-        },2000 )
-        console.log(res)
+            }].find(detail => detail.id === id);
+            res(items);
+            console.log('info detallada: ' + items.longDescription);
+            return items;
+        },2000);
     });
 }

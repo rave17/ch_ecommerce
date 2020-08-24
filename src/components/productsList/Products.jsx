@@ -3,11 +3,15 @@ import Title from '../title/Title.jsx';
 import imgExample from './product/img/example.png';
 import getProducts from '../../utils/getProducts';
 import { Container, Card, CardColumns, Button, Spinner, Row } from 'react-bootstrap';
-import onAdd from '../../utils/onAdd';
-import Counter from './product/Counter.jsx';
+import { Link } from 'react-router-dom';
 
 
 function ProductList({ product, imgProduct }) {
+
+function getDetail(id){
+    console.log(`this is the item: `, id)
+    return id;
+}
 
     return <>
         {product.map((p, idx) =>
@@ -20,9 +24,8 @@ function ProductList({ product, imgProduct }) {
                 </Card.Body>
                 <Card.Footer className="d-flex justify-content-around">
                     <Button variant="outline-info">Buy</Button>
-                    <Button >See More</Button>
+                    <Link to={`product/detail/${p.id}`}><Button onClick={()=>getDetail(p.id)}>See More</Button></Link>
                 </Card.Footer>
-                <Counter initial={1} min={1} max={3} onAdd={onAdd} />
             </Card>)}
     </>
 }
